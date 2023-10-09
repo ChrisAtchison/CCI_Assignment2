@@ -1,19 +1,24 @@
-resource "aws_instance" "a" {
-  ami                    = "ami-0e812285fd54f7620 "
-  instance_type          = "t2.micro"
-  key_name               = aws_key_pair.main.key_name
-  vpc_security_group_ids = [aws_security_group.lb.id]
-  subnet_id              = module.vpc.public_subnets[0]
-  availability_zone      = module.vpc.availability_zones[0]
+resource "aws_launch_template" "main" {
+  name_prefix   = "cci-"
+  image_id      = "ami-0e812285fd54f7620"
+  instance_type = "t2.micro"
+  user_data     = file("./static_files/user_data.sh")
+  key_name      = aws_key_pair.main.key_name
+  network_interfaces {
+    security_groups = [aws_security_group.main.id]
+  }
 }
 
-resource "aws_instance" "b" {
-  ami                    = "ami-0e812285fd54f7620 "
-  instance_type          = "t2.micro"
-  key_name               = aws_key_pair.main.key_name
-  vpc_security_group_ids = [aws_security_group.lb.id]
-  subnet_id              = module.vpc.public_subnets[1]
-  availability_zone      = module.vpc.availability_zones[1]
+resource "aws_autoscaling_group" "main" {
+  name               = "cci"
+  availability_zones = module.vpc.availability_zones
+  desired_capacity   = 1
+  max_size           = 2
+  min_size           = 1
+  launch_template {
+    id      = aws_launch_template.main.id
+    version = aws_launch_template.main.latest_version
+  }
 }
 
 resource "aws_key_pair" "main" {
@@ -36,13 +41,8 @@ resource "aws_target_group" "main" {
 }
 
 resource "aws_lb_target_group_attachment" "main" {
-  for_each = {
-    for k, v in aws_instance.* :
-    v.id => v
-  }
-
-  target_group_arn = aws_lb_target_group.main.arn
-  target_id        = each.value.id
+  target_group_arn = aws_target_group.main.arn
+  target_id        = aws_autoscaling_group.main.id
   port             = 80
 }
 
