@@ -3,13 +3,13 @@
 This system will be deployed using Infrastructure as a Service (IaaS) on Amazon Web Services (AWS).
 
 \subsection{Cloud Provider Selection}
-The growth in popularity of cloud services has fostered an industry with many competing cloud providers. Given the continued growth of the SmartV user-base, the choice to leverage an existing provider has been made to balance the increasing but dynamic demands of the platform while maintaining minimal-cost cloud infrastructure. Both internal and public cloud providers have been considered, including offerings from VMware, OpenStack, Azure, and Amazon Web Services (AWS).
+The growth in popularity of cloud services has fostered an industry with many competing cloud providers. Given the continued growth of the SmartV user-base, the choice to leverage an existing provider has been made to balance the increasing but dynamic demands of the platform while maintaining minimal-cost cloud infrastructure. Both internal and public cloud providers have been considered, including offerings from VMware, OpenStack, Azure, AWS.
 
 The use of internal cloud provisioning necessitates a significant up-front cost in both the hardware and software required by the transition to cloud infrastructure, and is over-all less flexible than the infrastructure-as-a-service models provided by Azure and AWS. These caveats to an internal cloud deployment represent unnecessary additional costs and management responsibilities to SmartV, reducing the organisations focus on end-users.
 
 For these reasons and over-all compatibility with the business requirements outlined in section \ref{sec:businessrequirements} AWS is selected as the cloud provider of choice for the project. The use of AWS also allows SmartV to bypass the upfront cost of any immediate upgrades to physical infrastructure by instead utilising storage, compute, and network provided by the AWS platform, paying for only the resources used by SmartV. The choice of AWS is also influenced by the ready availability of high-power compute instances required by the SmartV platform (see section \ref{sec:infrastructure-components}).
 
-\subsection{Design Assumptions}
+\subsection{Design Assumptions}\label{sec:designassumptions}
 
 The preparation of this document makes a few key assumptions that will need to be confirmed with SmartV. These are the following: 
 
@@ -22,11 +22,25 @@ The preparation of this document makes a few key assumptions that will need to b
 
 \subsection{Infrastructure Design}
 
+The architecture of the cloud infrastructure has been designed to reflect the business requirements listed in section \ref{sec:businessrequirements} and the design assumptions provided in section \ref{sec:designassumptions}. A brief overview of the deployed infrastructure is provided here, with details of each component provided in section \ref{sec:infrastructure-components} and a summary of implemented features in \textbf{PUT REFERENCE HERE}.
+
+All public-facing infrastructure components are routed from users to the AWS cloud via AWS's managed DNS service Route 53 connected directly to an application load balancer (ALB). The ALB allows automatic allocation of users amongst the distributed systems responsible for providing the SmartV services, and can automatically redistribute users to working infrastructure in the case of partial system failures. The ALB is provisioned within a public subnet in a Virtual Private Cloud (VPC), allowing end users to directly access only the ALB and not the internal infrastructure it directs traffic to.
+
+SmartV services themselves will be hosted on AWS Elastic Compute Cloud (EC2) instances provisioned across multiple availability zones (AZs) within internal subnets in the VPC. The distribution of instances across AZs provides a high level of redundancy and fault tolerance. In the event of hardware failures or other disruptions in one availability zone, SmartV's services will remain operational, offering uninterrupted access to users. The placement of the EC2 instances within an internal subnet restricts direct connectivity to the SmartV hosts, reducing the risk of unauthorized access and enhancing overall security. This configuration ensures that SmartV hosts are shielded from direct exposure to the internet, providing an additional layer of protection for sensitive data and services.
+
+The EC2 instances are also configured as part of an auto scaling group, allowing the number of provisioned instances to fluctuate with demand and provide end users with consistent performance independent of overall service load. The use of an ALB allows this scaling to be performed without any service interruptions, as traffic will be automatically routed to the most appropriate EC2 instance.
+
+
+All unstructured blob data (i.e. user multi-media files) is hosted on AWS Simple Storage Service (S3), with structured user data (login details, preferences) held in AWS Relational Database Service (RDS). Both S3 and RDS are configured with data encryption and backups, ensuring secure and reliable data storage and transfer \parencite{amazonwebservicesEncryptingAmazonRDS2023, amazonwebservicesProtectingDataEncryption}.
+
+An architecture diagram of the SmartV cloud infrastructure is provided in figure \ref{fig:awsdiagram}.
+
 \begin{figure}[H]\label{fig:awsdiagram}
     \centering
     \includegraphics[width=\textwidth]{cci_aws}
     \caption{Cloud Infrastructure Topology}
 \end{figure}
+
 
 \subsection{Infrastructure Components}
 \label{sec:infrastructure-components}
