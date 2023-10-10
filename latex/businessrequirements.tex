@@ -1,4 +1,4 @@
-\section{Business Requirements}
+\section{Business Requirements}\label{sec:businessrequirements}
 
 The operating model of the SmartV platform relies heavily on ready access to large amounts of storage, compute, and networking capability. This is especially true given the large amounts of high resolution video data the platform is expected to process and store. The business requirements captured from this understanding are presented here in two sections: the non-functional requirements relating to SmartV's operations and the functional requirements relating to the cloud infrastructure specifically.
 
@@ -44,3 +44,9 @@ High throughput and reliable networking is key to effective delivery of SmartV s
 \subsubsection*{Infrastructure Management}
 
 Deployed cloud infrastructure should be fully managed and configurable in anticipation of changes in future requirements, deployment of new services, and regular updates and maintenance.
+
+
+\subsection{Cloud Provider Selection}
+The growth in popularity of cloud services has fostered an industry with many competing cloud providers. Given the continued growth of the SmartV user-base, the choice to leverage an existing provider has been made to balance the increasing but dynamic demands of the platform while maintaining minimal-cost cloud infrastructure.
+
+For these reasons and compatibility with the business requirements outlined in section \ref{sec:businessrequirements} Amazon Web Services (AWS) is selected as the cloud provider of choice for the project. The use of AWS also allows SmartV to bypass the upfront cost of any immediate upgrades to physical infrastructure by instead utilising storage, compute, and network provided by the AWS platform, paying for only the resources used by SmartV. The choice of AWS is also influenced by the ready availability of high-power compute instances (see section \ref{sec:infrastructure-components})
