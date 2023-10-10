@@ -2,7 +2,7 @@ resource "aws_launch_template" "main" {
   name_prefix   = "cci-"
   image_id      = "ami-0e812285fd54f7620"
   instance_type = "t2.micro"
-  user_data     = file("./static_files/user_data.sh")
+  user_data     = base64encode(file("./static_files/user_data.sh"))
   key_name      = aws_key_pair.main.key_name
   network_interfaces {
     security_groups = [aws_security_group.main.id]

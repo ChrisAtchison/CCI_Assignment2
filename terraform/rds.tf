@@ -26,7 +26,7 @@ resource "aws_db_instance" "main" {
   instance_class            = "db.t3.micro"
   allocated_storage         = 4
   db_name                   = "cci"
-  username                  = "admin"
+  username                  = "christopher"
   password                  = "cci_admin"
   db_subnet_group_name      = module.vpc.database_subnet_group_name
   vpc_security_group_ids    = [aws_security_group.rds.id]
