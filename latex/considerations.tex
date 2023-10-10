@@ -15,3 +15,7 @@ SmartV offers services to a large number of users who understand their data to b
 \subsection{Scalability and Elasticity}
 
 As SmartV anticipates a potentially rapid growth in user base and content volume, the ability to scale resources dynamically is a key concern. Ensuring that the cloud infrastructure can efficiently accommodate changes in demand, particularly during peak usage times, is extremely important. Implementing auto-scaling and load balancing strategies, along with the use of AWS services like EC2 and S3, is a vital solution to achieving the desired level of elasticity and scalability.
+
+\subsection{Proof-of-Concept Pricing}
+
+The choice of the AWS public cloud made managing costs during the Proof-of-Concept (POC) phase a critical consideration. Implementing Infrastructure as Code (IaC) allowed us to define, deploy, and manage our cloud resources in a cost-effective manner. By scripting the infrastructure, we could accurately estimate costs, avoid over-provisioning, and utilize AWS's free-tier offerings to our advantage. This also meant we were able to quickly provision and destroy the cloud infrastructure to test our work, requiring very little overhead in the deployment process.
