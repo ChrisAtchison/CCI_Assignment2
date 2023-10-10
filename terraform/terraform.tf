@@ -8,5 +8,10 @@ terraform {
 }
 
 provider "aws" {
-  region = "ap-southeast-1"
+  region = "ap-southeast-2"
+  default_tags {
+    tags = {
+      Name = "cci_a2"
+    }
+  }
 }
