@@ -57,7 +57,7 @@ resource "aws_lb_listener" "main" {
   }
 }
 
-resource "aws_security_group" "lb" {
+resource "aws_security_group" "main" {
   name        = "lb"
   description = "Allow HTTP Traffic"
   vpc_id      = module.vpc.vpc_id
