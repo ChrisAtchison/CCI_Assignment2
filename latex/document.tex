@@ -12,28 +12,56 @@
     
 \maketitle
 
+\tableofcontents
+
+\clearpage
+
 \section{Assignment Brief DELETE}
 ``As you already know that web films and videos are everywhere on the net, SmartV is one of these online
 video companies who provides online video services, including video searching, video streaming and
 delivery, video editing, transcoding and adaptation. Actually, for video applications and services over the Internet, there are strong demands for cloud computing because of the significant and scalable amount of storage and computation required for serving millions of Internet users at the same time.''
- 
+
 \section{Background}
 
 SmartV is a popular online platform providing a wide range of video tools to end-users. Services are provided to consumers over the internet and include video streaming and delivery, video searching, video editing, video transcoding and adaptation.
 
 The SmartV platform is well used and is currently experiencing significant growth in user-base. This trend has prompted a transition from on-premises infrastructure to the cloud with the aim of future-proofing the company's scalability and cost-competitiveness.
- 
+
 \section{Business Requirements}
+
+The operating model of the SmartV platform relies heavily on ready access to large amounts of storage, compute, and networking capability for a large number of users. This is especially given the large amounts of high resolution video data the platform is expected to process and store.
+
+\subsection{Scalability}
+
+Scalability represents a primary business objective and requirement for SmartV's transition to cloud-based infrastructure, and underlies most of the business requirements outlined in this document.
 
 \subsection{Storage}
 
+Effective storage management is a key requirement of SmartV's infrastructure, with the service housing massive amounts of video data for its users. A viable storage solution for the transition to cloud must fulfil the following:
+
+\begin{description}
+    \item[Scalable] As SmartV's user base continues to grow, a viable storage solution must be able to cope with fluctuations in storage requirements.
+    \item[Reliable] The storage implementation provided to SmartV must provide hosted files to users reliably.
+    \item[High Availability] SmartV hosted files must be highly available to users, with built in redundancy measures.
+\end{description}
+
+
+
 \subsection{Compute}
 
-\subsection{Scalability}
+The computational intensity of video based workloads necessitates significant amounts of domain-specific compute availability in the form of graphics processing unit (GPU) access, as well as the additional components required to support them. 
+
+\begin{description}
+    \item[] description
+\end{description}
 
 \subsection{Network}
 
 \subsection{Availability}
+
+\subsection{Security}
+
+\subsection{Infrastructure Management}
 
 \subsection{Other stuff DELETE}
 `` Some other basic cloud implementation/management requirements, such as high availability, DRS,
