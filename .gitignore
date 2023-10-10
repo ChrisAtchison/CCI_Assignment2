@@ -33,6 +33,8 @@ override.tf.json
 .terraformrc
 terraform.rc
 
+# EC2 SSH Key
+id_rsa
 
 # LaTeX Ignore
 *.acn
