@@ -6,7 +6,6 @@ resource "aws_lb" "main" {
 }
 
 resource "aws_lb_target_group" "main" {
-  name        = "main"
   target_type = "alb"
   port        = 80
   protocol    = "HTTP"
@@ -31,7 +30,6 @@ resource "aws_lb_listener" "main" {
 }
 
 resource "aws_security_group" "lb" {
-  name        = "lb"
   description = "Allow HTTP Traffic"
   vpc_id      = module.vpc.vpc_id
 
