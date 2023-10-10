@@ -1,4 +1,5 @@
 \documentclass[]{article}
+\usepackage[margin=1.25in]{geometry}
 
 \usepackage[bibstyle=apa, sorting=nyt, backend=biber, citestyle=authoryear, natbib]{biblatex}
 \addbibresource{refs.bib}
@@ -16,11 +17,6 @@
 
 \clearpage
 
-\section{Assignment Brief DELETE}
-``As you already know that web films and videos are everywhere on the net, SmartV is one of these online
-video companies who provides online video services, including video searching, video streaming and
-delivery, video editing, transcoding and adaptation. Actually, for video applications and services over the Internet, there are strong demands for cloud computing because of the significant and scalable amount of storage and computation required for serving millions of Internet users at the same time.''
-
 \section{Background}
 
 SmartV is a popular online platform providing a wide range of video tools to end-users. Services are provided to consumers over the internet and include video streaming and delivery, video searching, video editing, video transcoding and adaptation.
@@ -29,11 +25,21 @@ The SmartV platform is well used and is currently experiencing significant growt
 
 \section{Business Requirements}
 
-The operating model of the SmartV platform relies heavily on ready access to large amounts of storage, compute, and networking capability for a large number of users. This is especially given the large amounts of high resolution video data the platform is expected to process and store.
+The operating model of the SmartV platform relies heavily on ready access to large amounts of storage, compute, and networking capability. This is especially true given the large amounts of high resolution video data the platform is expected to process and store. The business requirements captured from this understanding are presented here in two sections: the requirements relating to SmartV's operations and the requirements relating to the cloud infrastructure specifically.
 
-\subsection{Scalability}
+\subsection{Operational Requirements}
 
-Scalability represents a primary business objective and requirement for SmartV's transition to cloud-based infrastructure, and underlies most of the business requirements outlined in this document.
+\subsubsection{Scalability}
+
+Scalability represents a primary business objective for SmartV's transition to cloud-based infrastructure, and underlies most of the business requirements outlined in this document. The deployment of scalable infrastructure provides SmartV the ability to react to fluctuations in platform usage while minimising any costs associated with under-utilised infrastructure.
+
+\subsubsection{Availability}
+
+The SmartV platform's customer-facing model requires services to be highly available to end-users, ensuring uninterrupted access to videos and features. Services need to be available even during peak usage times or unforeseen spikes in demand.
+
+\subsubsection{Reliability}
+
+\subsection{Infrastructure Requirements}
 
 \subsection{Storage}
 
