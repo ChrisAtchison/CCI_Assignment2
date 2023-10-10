@@ -33,6 +33,7 @@ resource "aws_autoscaling_group" "main" {
         launch_template_id = aws_launch_template.main.id
       }
       override {
+        instance_type     = "t2.micro"
         weighted_capacity = "2"
         launch_template_specification {
           launch_template_id = aws_launch_template.off.id
