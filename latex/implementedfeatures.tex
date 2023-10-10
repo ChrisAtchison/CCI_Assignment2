@@ -2,7 +2,7 @@
 
 \subsection{Infrastructure as Code}
 
-The demo and final solution of this design will be implemented in Terraform through the official AWS provider. Terraform is an Infrastructure as Code (Iac) software tool that allows declarative configuration of cloud infrastructure in a language called Hashicorp Configuration Language (HCL). his allows the management of infrastructure through well known and available tools such as Git, allowing changes to be monitored, strictly confirmed, and rolled back to known working states if necessary.
+The demo and final solution of this design will be implemented in Terraform through the official AWS provider. Terraform is an Infrastructure as Code (Iac) software tool that allows declarative configuration of cloud infrastructure in a language called Hashicorp Configuration Language (HCL). his allows the management of infrastructure through well known and available tools such as Git, allowing changes to be monitored, strictly confirmed, and rolled back to known working states if necessary. It has extensive documentation available at \url{https://registry.terraform.io/providers/hashicorp/aws/latest/docs}
 
 \subsection{Load Balancing}
 
@@ -12,7 +12,7 @@ A load balancer setup consists of a target group defining protocols, ports, and 
 
 \begin{figure}[H]\label{fig:loadbalancer}
     \centering
-    \includegraphics[width=\textwidth]{loadbalancer}
+    \includegraphics[width=.8\textwidth]{loadbalancer}
     \caption{Example Load Balancer Topology}
 \end{figure}
 
@@ -26,11 +26,8 @@ High availability will be achieved through seperating cloud resources across two
 
 \subsection{Backups}
 
-EBS snapshots are copies of compute drives at a point in time for some EC2 instance. These allow the restoration of an EC2 as it was at that point in time without much friction. These are critical as a lot of the work performed on EC2s will be with ephemeral data that is critical to a user's experience. If a compute instance were to go down, this information can be restored without much delay.
-% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSSnapshots.html
+EBS snapshots are copies of compute drives at a point in time for some EC2 instance. These allow the restoration of an EC2 as it was at that point in time without much friction. These are critical as a lot of the work performed on EC2s will be with ephemeral data that is critical to a user's experience. If a compute instance were to go down, this information can be restored without much delay \autocite{amazonwebservicesAmazonEBS2023}.
 
-RDS backups occur daily in a specified time controlled by AWS. This ensures that critical user data is intentionally redundant. Alongside this is a read-only instance replica. This ensures that the load on the primary DB is never too excessive, and access is always available even when heavy writes are underway. Ideally, there would also be a third standby replica, where no client has read access at all. This will be in place to ensure further redundancy and backups. It will not be implemented in the demo, but planned and accounted for in the design.
-% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_ReadRepl.html
+RDS backups occur daily in a specified time controlled by AWS. This ensures that critical user data is intentionally redundant. Alongside this is a read-only instance replica. This ensures that the load on the primary DB is never too excessive, and access is always available even when heavy writes are underway. Ideally, there would also be a third standby replica, where no client has read access at all. This will be in place to ensure further redundancy and backups. It will not be implemented in the demo, but planned and accounted for in the design \autocite{amazonwebservicesEncryptingAmazonRDS2023}.
 
-S3 is an extremely simple service to use, and promises four 9s of availability and eleven 9s of object durability. This is done by distributing and cloning obejcts across multiple availability zones without the need for administrator input.
-% https://aws.amazon.com/s3/storage-classes/
+S3 is an extremely simple service to use, and promises four 9s of availability and eleven 9s of object durability. This is done by distributing and cloning obejcts across multiple availability zones without the need for administrator input \autocite{amazonwebservicesAmazonSimpleStorage2023}.
