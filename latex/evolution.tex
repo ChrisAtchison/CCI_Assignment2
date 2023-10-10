@@ -1,1 +1,19 @@
 \section{Evolution of Technology}
+
+Cloud technology has evolved substantially over the last decade. With the competition and maturation of large public cloud providers such as Amazon Web Services (AWS), Google Cloud Platform (GCP) and Microsoft's Azure, alongside the development of on-premesis cloud computing virtualisation platforms such as VMware's vSphere and the open source OpenStack, virtualisation and cloud computing is making bare-metal operations harder to justify in medium to large scale operations. This section will discuss some of the innovations and selling points of cloud technology, especially referring to external cloud providers, whether public or private. This will be perfoemd through the lens of VMware offerings, as it allows a deeper understanding of how data centre management has evolved.
+
+\subsection{Backups and High Availability}
+
+High availability (HA) is a feature of vSphere that allows for the automatic restart of virtual machines in the event of a host failure. This is achieved through the use of a cluster of hosts, which are monitored by a master host. The master host is responsible for monitoring the health of the other hosts in the cluster, and in the event of a failure, will restart the virtual machines on another host in the cluster.
+
+Veeam backup is a proprietary backup system developed by Veeam for virtual environments built on vSphere, Microsoft Hyper-V or Nutanix AHV. First introduced in 2008, the software has seen evolution over the last 10 years especially in regards to integrations with public cloud providers. For example, functionality to direct restore to Microsoft Azure and natively send backups to AWS S3 and GCP Storage.
+
+An alternative for Veeam is Veritas Backup Exec. This is a product designed and distributed by Veritas Technologies as a direct competitor to Veeam backup. It has a similar feature set, though is more targeted at hybrid environments, with support for both virtual and physical environments.
+
+veritas also has a newer offering, called NetBackup. It is designed to operator at far larger scales, and is targeted at enterprise environments. It has a similar feature set to Backup Exec, though is more scalable and has more advanced features such as deduplication and replication.
+
+\subsection{Security}
+
+VMware's security offering is called VMware NSX. It is a software defined networking (SDN) solution that allows for the creation of virtual networks, and the ability to apply security policies to these networks. It is a key selling point for VMware, as it allows for the creation of virtual networks that are isolated from the physical network, and can be used to create a zero-trust network.
+
+An alternative to NSX is VyOS, a Debian based network operating system. It is a free and open source software, and is designed to be deployed on physical hardware. It provides a greater level of control and customisation over the network, though loses a lot of the ease of use and integration that NSX provides. It is also deployable on AWS EC2 instances, and can be used to create a virtual network in the cloud.
