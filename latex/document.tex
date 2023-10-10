@@ -1,5 +1,8 @@
 \documentclass[]{article}
 \usepackage[margin=1.25in]{geometry}
+\usepackage{graphicx}
+\graphicspath{ {./images/} }
+\usepackage{float}
 
 \usepackage[bibstyle=apa, sorting=nyt, backend=biber, citestyle=authoryear, natbib]{biblatex}
 \addbibresource{refs.bib}
@@ -41,6 +44,8 @@ The SmartV platform's customer-facing model requires services to be highly avail
 
 \subsubsection{Reliability}
 
+The cloud infrastructure used to enable SmartV must also prioritise high availability, with resilient architecture that minimises downtime and ensures continuous service delivery. 
+
 \subsection{Infrastructure Requirements}
 
 % S3 has 11 9's of durability 
@@ -79,7 +84,18 @@ resource control, updating, etc. ''
 
 \section{Cloud Architecture and Design}
 
+\subsection{Platform Selection}
+
+
+
 \subsection{Design Assumptions}
+
+\subsection{Infrastructure Design}
+\begin{figure}[H]\label{fig:awsdiagram}
+    \centering
+    \includegraphics[width=\textwidth]{cci_aws}
+    \caption{Cloud Infrastructure Topology}
+\end{figure}
 
 \subsection{Pricing}
 
