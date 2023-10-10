@@ -32,7 +32,7 @@ resource "aws_lb" "main" {
   subnets            = [for subnet in module.vpc.public_subnets : subnet.id]
 }
 
-resource "aws_target_group" "main" {
+resource "aws_lb_target_group" "main" {
   name        = "main"
   target_type = "alb"
   port        = 80
