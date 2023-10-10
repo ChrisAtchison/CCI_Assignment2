@@ -24,9 +24,12 @@ resource "aws_launch_template" "off" {
 
 resource "aws_autoscaling_group" "main" {
   availability_zones = module.vpc.azs
-  desired_capacity   = 1
+  desired_capacity   = 2
   max_size           = 2
   min_size           = 1
+  target_group_arns = [
+    aws_lb_target_group.main.arn,
+  ]
   mixed_instances_policy {
     launch_template {
       launch_template_specification {
