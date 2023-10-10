@@ -21,6 +21,7 @@ resource "aws_autoscaling_group" "main" {
 }
 
 resource "aws_key_pair" "main" {
+  key_name   = "cci_a2"
   public_key = file("./.ssh/id_rsa.pub")
 }
 
