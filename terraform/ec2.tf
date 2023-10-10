@@ -11,7 +11,7 @@ resource "aws_launch_template" "main" {
 
 resource "aws_autoscaling_group" "main" {
   name               = "cci"
-  availability_zones = module.vpc.availability_zones
+  availability_zones = module.vpc.azs
   desired_capacity   = 1
   max_size           = 2
   min_size           = 1
