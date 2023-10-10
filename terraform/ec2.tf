@@ -40,6 +40,6 @@ resource "aws_security_group" "main" {
     from_port   = 0
     to_port     = 0
     protocol    = "-1"
-    cidr_blocks = [module.vpc.public_subnets_cidr_blocks]
+    cidr_blocks = module.vpc.public_subnets_cidr_blocks
   }
 }
