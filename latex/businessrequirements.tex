@@ -1,54 +1,49 @@
 \section{Business Requirements}
 
-The operating model of the SmartV platform relies heavily on ready access to large amounts of storage, compute, and networking capability. This is especially true given the large amounts of high resolution video data the platform is expected to process and store. The business requirements captured from this understanding are presented here in two sections: the requirements relating to SmartV's operations and the requirements relating to the cloud infrastructure specifically.
+The operating model of the SmartV platform relies heavily on ready access to large amounts of storage, compute, and networking capability. This is especially true given the large amounts of high resolution video data the platform is expected to process and store. The business requirements captured from this understanding are presented here in two sections: the non-functional requirements relating to SmartV's operations and the functional requirements relating to the cloud infrastructure specifically.
 
 \subsection{Operational Requirements}
 
-\subsubsection{Scalability}
+The requirements outlined here represent non-functional and operational functions of the cloud infrastructure solution.
+
+\subsubsection*{Scalability}
 
 Scalability represents a primary business objective for SmartV's transition to cloud-based infrastructure, and underlies most of the business requirements outlined in this document. The deployment of scalable infrastructure provides SmartV the ability to react to fluctuations in platform usage while minimising any costs associated with under-utilised infrastructure.
 
-\subsubsection{Availability}
+\subsubsection*{Availability}
 
 The SmartV platform's customer-facing model requires services to be highly available to end-users, ensuring uninterrupted access to videos and features. Services need to be available even during peak usage times or unforeseen spikes in demand.
 
 % S3 has 4 9's of durability https://docs.aws.amazon.com/AmazonS3/latest/userguide/DataDurability.html
 
-\subsubsection{Reliability}
+\subsubsection*{Reliability}
 
 The cloud infrastructure used to enable SmartV must also prioritise high availability, with resilient architecture that minimises downtime and ensures continuous service delivery. 
 
+\subsubsection*{Security}
+
+A high level of security is required to protect user data and the SmartV platform itself. All data hosted by the cloud infrastructure should be encrypted and subject to strict access control and authentication. Both ingress and egress traffic should be restricted with additional monitoring across the network and infrastructure enabling incident detection and response. 
+
 \subsection{Infrastructure Requirements}
 
-% S3 has 11 9's of durability 
+The functional requirements of the cloud infrastructure itself form the core project, with each item listed here built on the operational requirements outlined above.
 
-\subsection{Storage}
+\subsubsection*{Storage}
 
-Effective storage management is a key requirement of SmartV's infrastructure, with the service housing massive amounts of video data for its users. A viable storage solution for the transition to cloud must fulfil the following:
-
-\begin{description}
-    \item[Scalable] As SmartV's user base continues to grow, a viable storage solution must be able to cope with fluctuations in storage requirements.
-    \item[Reliable] The storage implementation provided to SmartV must provide hosted files to users reliably.
-    \item[High Availability] SmartV hosted files must be highly available to users, with built in redundancy measures.
-\end{description}
+Effective storage management is a key requirement of SmartV's infrastructure, with the service housing massive amounts of multi-media data for its users.
 
 
-
-\subsection{Compute}
+\subsubsection*{Compute}
 
 The computational intensity of video based workloads necessitates significant amounts of domain-specific compute availability in the form of graphics processing unit (GPU) access, as well as the additional components required to support them. 
 
-\begin{description}
-    \item[] description
-\end{description}
+\subsubsection*{Network}
 
-\subsection{Network}
+High throughput and reliable networking is key to effective delivery of SmartV services.
 
-\subsection{Availability}
+\subsubsection*{Infrastructure Management}
 
-\subsection{Security}
-
-\subsection{Infrastructure Management}
+Deployed cloud infrastructure should be fully managed and configurable in anticipation of changes in future requirements and deployment of new services.
 
 \subsection{Other stuff DELETE}
 `` Some other basic cloud implementation/management requirements, such as high availability, DRS,
