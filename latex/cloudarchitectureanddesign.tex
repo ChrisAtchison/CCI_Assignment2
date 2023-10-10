@@ -8,7 +8,15 @@ This system will be deployed using Infrastructure as a Service (IaaS). It is ass
 
 \subsection{Design Assumptions}
 
+The preparation of this document makes a few key assumptions that will need to be confirmed with SmartV. These are the following: 
+
+\begin{itemize}
+    \item \textbf{Geographic Scope}
+    \item \textbf{}
+\end{itemize}
+
 \subsection{Infrastructure Design}
+
 \begin{figure}[H]\label{fig:awsdiagram}
     \centering
     \includegraphics[width=\textwidth]{cci_aws}
@@ -16,6 +24,7 @@ This system will be deployed using Infrastructure as a Service (IaaS). It is ass
 \end{figure}
 
 \subsection{Infrastructure Components}
+\label{sec:infrastructure-components}
 
 \subsubsection*{DNS (Route 53)}
 
@@ -27,7 +36,7 @@ To balance load across seperate compute clusters, an application load balancer (
 
 \subsubsection*{Compute (EC2)}
 
-Using an autoscaling group of EC2 instances of type ``p3.8xlarge'', compute will be handled and scaled with demand. The instance types are very large to accomodate for the intense RAM, CPU, and GPU requirements video demands. A key feature of S3 is the inherent scalability, as this is abstracted away from the end user.
+Using an autoscaling group of EC2 instances of type ``p3.8xlarge'', compute will be handled and scaled with demand. The instance types are very large to accomodate for the intense RAM, CPU, and GPU requirements video demands. A key feature of S3 is the inherent scalability, as this is abstracted away from the end user. The use of this instance scale also allows networking performance of 10 Gbps. This will be very helpful as the most intense network requirements are occurring internally on AWS, between compute and content storage on S3.
 
 \subsubsection*{Content Storage (S3)}
 
@@ -55,7 +64,7 @@ Using EC2 autoscaling groups, AWS will launch new compute instances as demand in
 
 \subsubsection*{High Availability}
 
-High availability will be achieved through seperating cloud resources across two AWS availability zones (AZs), allowing an entire region of AWS to lose access, while maintaining service for customers.
+High availability will be achieved through seperating cloud resources across two AWS availability zones (AZs), allowing an entire region of AWS to lose access, while maintaining service for customers. It also allows upgrades to infrastructure and software to cause a temporary planned outage in one region while maintaining uninterrupted service globally.
 
 \subsection{Pricing}
 
