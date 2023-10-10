@@ -24,7 +24,7 @@ resource "aws_db_instance" "main" {
   engine                    = "postgres"
   engine_version            = "13.10"
   instance_class            = "db.t3.micro"
-  allocated_storage         = 4
+  allocated_storage         = 16
   db_name                   = "cci"
   username                  = "christopher"
   password                  = "cci_admin"
