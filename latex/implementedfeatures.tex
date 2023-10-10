@@ -1,8 +1,10 @@
-\section{Implemented Features}
+\section{Implemented Features}\label{sec:implementedfeatures}
+
+The architecture of the SmartV cloud infrastructure is improved significantly through several key implemented features, included the improve the reliability, scalability, security, and management of the infrastructure.
 
 \subsection{Infrastructure as Code}
 
-The demo and final solution of this design will be implemented in Terraform through the official AWS provider. Terraform is an Infrastructure as Code (Iac) software tool that allows declarative configuration of cloud infrastructure in a language called Hashicorp Configuration Language (HCL). his allows the management of infrastructure through well known and available tools such as Git, allowing changes to be monitored, strictly confirmed, and rolled back to known working states if necessary. It has extensive documentation available at \url{https://registry.terraform.io/providers/hashicorp/aws/latest/docs}
+The demo and final solution of this design will be implemented in Terraform\footnote{See \url{https://registry.terraform.io/providers/hashicorp/aws/latest/docs}.} through the official AWS provider. Terraform is an Infrastructure as Code (Iac) software tool that allows declarative configuration of cloud infrastructure in a language called Hashicorp Configuration Language (HCL). This allows the management of infrastructure through versioning control tools such as Git, allowing changes to be monitored, strictly confirmed, and rolled back to known working states if necessary. The use of IaC also enables replication of infrastructure across multiple environments and the ability to closely manage maintenance and upgrades.
 
 \subsection{Load Balancing}
 
@@ -16,13 +18,17 @@ A load balancer setup consists of a target group defining protocols, ports, and 
     \caption{Example Load Balancer Topology}
 \end{figure}
 
+\subsection{Domain-Specific Instance Selection}
+
+The EC2 instances have been selected specifically with the intensive computational requirements of the SmartV platform in mind. Each p3.2xlarge instance has 16 GiB of GPU memory within an Nvidia Tesla V100, 61 GiB of RAM, and 8 virtual CPUs.
+
 \subsection{Scaling (Compute)}
 
 Using EC2 autoscaling groups, AWS will launch new compute instances as demand increases on pre-existing ones, placing them behind the ALB. Retaining a minimum of 1 instance ensures constant availability. An option available is keep ``warm pools'' of compute instances pre-initialized but not in use, allowing near instant upscaling as demand spikes, though it is not implemented in this solution.
 
 \subsection{High Availability}
 
-High availability will be achieved through seperating cloud resources across two AWS availability zones (AZs), allowing an entire region of AWS to lose access, while maintaining service for customers. It also allows upgrades to infrastructure and software to cause a temporary planned outage in one region while maintaining uninterrupted service globally.
+High availability will be achieved through seperating cloud resources across two AWS AZs, allowing an entire region of AWS to lose access, while maintaining service for customers. It also allows upgrades to infrastructure and software to cause a temporary planned outage in one region while maintaining uninterrupted service globally.
 
 \subsection{Backups}
 

@@ -22,7 +22,7 @@ The preparation of this document makes a few key assumptions that will need to b
 
 \subsection{Infrastructure Design}
 
-The architecture of the cloud infrastructure has been designed to reflect the business requirements listed in section \ref{sec:businessrequirements} and the design assumptions provided in section \ref{sec:designassumptions}. A brief overview of the deployed infrastructure is provided here, with details of each component provided in section \ref{sec:infrastructure-components} and a summary of implemented features in \textbf{PUT REFERENCE HERE}.
+The architecture of the cloud infrastructure has been designed to reflect the business requirements listed in section \ref{sec:businessrequirements} and the design assumptions provided in section \ref{sec:designassumptions}. A brief overview of the deployed infrastructure is provided here, with details of each component provided in section \ref{sec:infrastructure-components} and a summary of implemented features in section \ref{sec:implementedfeatures}.
 
 All public-facing infrastructure components are routed from users to the AWS cloud via AWS's managed DNS service Route 53 connected directly to an application load balancer (ALB). The ALB allows automatic allocation of users amongst the distributed systems responsible for providing the SmartV services, and can automatically redistribute users to working infrastructure in the case of partial system failures. The ALB is provisioned within a public subnet in a Virtual Private Cloud (VPC), allowing end users to directly access only the ALB and not the internal infrastructure it directs traffic to.
 
@@ -40,7 +40,7 @@ The EC2 instances are also configured as part of an auto scaling group, allowing
 
 All unstructured blob data (i.e. user multi-media files) is hosted on AWS Simple Storage Service (S3), with structured user data (login details, preferences) held in AWS Relational Database Service (RDS). Both S3 and RDS are configured with data encryption and backups, ensuring secure and reliable data storage and transfer \parencite{amazonwebservicesEncryptingAmazonRDS2023, amazonwebservicesProtectingDataEncryption}.
 
-An architecture diagram of the SmartV cloud infrastructure is provided in figure \ref{fig:awsdiagram}.
+An architecture diagram of the SmartV cloud infrastructure topology is provided in figure \ref{fig:awsdiagram}.
 
 \begin{figure}[h]
     \centering
