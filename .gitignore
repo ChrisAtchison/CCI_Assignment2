@@ -83,4 +83,4 @@ id_rsa
 .bak 
 .mtc
 build/
-.pdf
+*.pdf
