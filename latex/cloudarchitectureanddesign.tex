@@ -26,7 +26,14 @@ The architecture of the cloud infrastructure has been designed to reflect the bu
 
 All public-facing infrastructure components are routed from users to the AWS cloud via AWS's managed DNS service Route 53 connected directly to an application load balancer (ALB). The ALB allows automatic allocation of users amongst the distributed systems responsible for providing the SmartV services, and can automatically redistribute users to working infrastructure in the case of partial system failures. The ALB is provisioned within a public subnet in a Virtual Private Cloud (VPC), allowing end users to directly access only the ALB and not the internal infrastructure it directs traffic to.
 
-SmartV services themselves will be hosted on AWS Elastic Compute Cloud (EC2) instances provisioned across multiple availability zones (AZs) within internal subnets in the VPC. The distribution of instances across AZs provides a high level of redundancy and fault tolerance. In the event of hardware failures or other disruptions in one availability zone, SmartV's services will remain operational, offering uninterrupted access to users. The placement of the EC2 instances within an internal subnet restricts direct connectivity to the SmartV hosts, reducing the risk of unauthorised access and enhancing overall security. This configuration ensures that SmartV hosts are shielded from direct exposure to the internet, providing an additional layer of protection for sensitive data and services.
+SmartV services themselves will be hosted on AWS Elastic Compute Cloud (EC2) instances provisioned across multiple availability zones (AZs) within internal subnets in the VPC. AZs represent geographically distinct physical data centres in which the cloud infrastructure is provisioned and provide a high level of redundancy and fault tolerance. This means that in the event of hardware failures or other disruptions in one availability zone, SmartV's services will remain operational, offering uninterrupted access to users. The placement of the EC2 instances within an internal subnet restricts direct connectivity to the SmartV hosts, reducing the risk of unauthorised access and enhancing overall security. This configuration ensures that SmartV hosts are shielded from direct exposure to the internet, providing an additional layer of protection for sensitive data and services.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\textwidth]{regions-and-zones}
+    \caption{AWS Availability Zones \parencite{amazonwebservicesAWSRegionsAvailability}}
+    \label{fig:availabilityzones}
+\end{figure}
 
 The EC2 instances are also configured as part of an auto scaling group, allowing the number of provisioned instances to fluctuate with demand and provide end users with consistent performance independent of overall service load. The use of an ALB allows this scaling to be performed without any service interruptions, as traffic will be automatically routed to the most appropriate EC2 instance.
 
@@ -37,7 +44,7 @@ An architecture diagram of the SmartV cloud infrastructure is provided in figure
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=\textwidth]{cci_aws}
+    \includegraphics[width=0.75\textwidth]{cci_aws}
     \caption{Cloud Infrastructure Topology}
     \label{fig:awsdiagram}
 \end{figure}
