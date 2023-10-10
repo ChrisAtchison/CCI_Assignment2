@@ -14,10 +14,10 @@ For these reasons and over-all compatibility with the business requirements outl
 The preparation of this document makes a few key assumptions that will need to be confirmed with SmartV. These are the following: 
 
 \begin{enumerate}
-    \item \textbf{Provision of Software:} We assume SmartV has proprietary software suitable for serving the needs of its customer base, and is only looking to extend from an on-premises computing solution to a cloud infrastructure solution. No considertaion is made for changes to software not directly related to infrastructure.
-    \item \textbf{Geographic Scope:} We assume SmartV operates primarily in the Asia-Pacific (APAC) region. We therefore design for traffic in the area by placing infrastructure primarily in Sydney datacentres, with high availability available in Singapore datacentres.
-    \item \textbf{User Accounts:} We assume SmartV has interest in individual user profiles and accounts, which will need special consideration in this infrastructure environment to handle storage and backups.
-    \item \textbf{Compute Requirements:} We assume SmartV is interested in high levels of compute. Video as a data source is an extremely large medium compared to, for e.g. text or music. Therefore we spec the compute capabilities quite highly, with support for high CPU, GPU, and RAM availability per instance.
+    \item \textbf{Provision of Software:} It is assumed that SmartV has proprietary software suitable for serving the needs of its customer base, and is only looking to extend from an on-premises computing solution to a cloud infrastructure solution. No consideration is made for changes to software not directly related to infrastructure.
+    \item \textbf{Geographic Scope:} It is assumed that SmartV operates primarily in the Asia-Pacific (APAC) region. We therefore design for traffic in the area by placing infrastructure primarily in Sydney datacentres, with high availability available in Singapore datacentres.
+    \item \textbf{User Accounts:} It is assumed that SmartV has interest in individual user profiles and accounts, which will need special consideration in this infrastructure environment to handle storage and backups.
+    \item \textbf{Compute Requirements:} It is assumed that the SmartV software requires high levels of compute power to provide multi-media services to users. Therefore we spec the compute capabilities quite highly, with support for high CPU, GPU, and RAM availability per instance.
 \end{enumerate}
 
 \subsection{Infrastructure Design}
@@ -26,7 +26,7 @@ The architecture of the cloud infrastructure has been designed to reflect the bu
 
 All public-facing infrastructure components are routed from users to the AWS cloud via AWS's managed DNS service Route 53 connected directly to an application load balancer (ALB). The ALB allows automatic allocation of users amongst the distributed systems responsible for providing the SmartV services, and can automatically redistribute users to working infrastructure in the case of partial system failures. The ALB is provisioned within a public subnet in a Virtual Private Cloud (VPC), allowing end users to directly access only the ALB and not the internal infrastructure it directs traffic to.
 
-SmartV services themselves will be hosted on AWS Elastic Compute Cloud (EC2) instances provisioned across multiple availability zones (AZs) within internal subnets in the VPC. The distribution of instances across AZs provides a high level of redundancy and fault tolerance. In the event of hardware failures or other disruptions in one availability zone, SmartV's services will remain operational, offering uninterrupted access to users. The placement of the EC2 instances within an internal subnet restricts direct connectivity to the SmartV hosts, reducing the risk of unauthorized access and enhancing overall security. This configuration ensures that SmartV hosts are shielded from direct exposure to the internet, providing an additional layer of protection for sensitive data and services.
+SmartV services themselves will be hosted on AWS Elastic Compute Cloud (EC2) instances provisioned across multiple availability zones (AZs) within internal subnets in the VPC. The distribution of instances across AZs provides a high level of redundancy and fault tolerance. In the event of hardware failures or other disruptions in one availability zone, SmartV's services will remain operational, offering uninterrupted access to users. The placement of the EC2 instances within an internal subnet restricts direct connectivity to the SmartV hosts, reducing the risk of unauthorised access and enhancing overall security. This configuration ensures that SmartV hosts are shielded from direct exposure to the internet, providing an additional layer of protection for sensitive data and services.
 
 The EC2 instances are also configured as part of an auto scaling group, allowing the number of provisioned instances to fluctuate with demand and provide end users with consistent performance independent of overall service load. The use of an ALB allows this scaling to be performed without any service interruptions, as traffic will be automatically routed to the most appropriate EC2 instance.
 
@@ -35,10 +35,11 @@ All unstructured blob data (i.e. user multi-media files) is hosted on AWS Simple
 
 An architecture diagram of the SmartV cloud infrastructure is provided in figure \ref{fig:awsdiagram}.
 
-\begin{figure}[h]\label{fig:awsdiagram}
+\begin{figure}[h]
     \centering
     \includegraphics[width=\textwidth]{cci_aws}
     \caption{Cloud Infrastructure Topology}
+    \label{fig:awsdiagram}
 \end{figure}
 
 
