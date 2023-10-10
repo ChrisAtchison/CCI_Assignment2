@@ -38,7 +38,7 @@ SmartV services themselves will be hosted on AWS Elastic Compute Cloud (EC2) ins
 The EC2 instances are also configured as part of an auto scaling group, allowing the number of provisioned instances to fluctuate with demand and provide end users with consistent performance independent of overall service load. The use of an ALB allows this scaling to be performed without any service interruptions, as traffic will be automatically routed to the most appropriate EC2 instance.
 
 
-All unstructured blob data (i.e. user multi-media files) is hosted on AWS Simple Storage Service (S3), with structured user data (login details, preferences) held in AWS Relational Database Service (RDS). Both S3 and RDS are configured with data encryption and backups, ensuring secure and reliable data storage and transfer \parencite{amazonwebservicesEncryptingAmazonRDS2023, amazonwebservicesProtectingDataEncryption}.
+All unstructured blob data (i.e. user multi-media files) is hosted on AWS Simple Storage Service (S3), with structured user data (login details, preferences) held in AWS Relational Database Service (RDS). Both S3 and RDS are configured with data encryption and backups, ensuring secure and reliable data storage and transfer \parencite{amazonwebservicesEncryptingAmazonRDS2023, amazonwebservicesProtectingDataEncryption2023}.
 
 An architecture diagram of the SmartV cloud infrastructure topology is provided in figure \ref{fig:awsdiagram}.
 
