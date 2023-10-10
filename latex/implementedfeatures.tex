@@ -5,3 +5,10 @@
 \subsection{Backups}
 
 \subsection{Infrastructure as Code}
+\subsubsection*{Scaling (Compute)}
+
+Using EC2 autoscaling groups, AWS will launch new compute instances as demand increases on pre-existing ones, placing them behind the ALB. Retaining a minimum of 1 instance ensures constant availability. An option available is keep ``warm pools'' of compute instances pre-initialized but not in use, allowing near instant upscaling as demand spikes.
+
+\subsubsection*{High Availability}
+
+High availability will be achieved through seperating cloud resources across two AWS availability zones (AZs), allowing an entire region of AWS to lose access, while maintaining service for customers. It also allows upgrades to infrastructure and software to cause a temporary planned outage in one region while maintaining uninterrupted service globally.
