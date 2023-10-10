@@ -7,3 +7,11 @@ The development of SmartV's cloud infrastructure has forced several key consider
 One critical consideration is the choice between private and public cloud deployment models. While a private cloud offers dedicated resources and enhanced control over security and infrastructure management, there are also much higher initial costs in acquiring the requisite physical infrastructure. By contrast, use of a public cloud provides scalability and cost-efficiency, but reduces the level of control over the underlying infrastructure.
 
 For a web-based and consumer-facing platform such as SmartV, it was decided that ability to easily scale infrastructure to platform usage was a crucial aspect of the transition to cloud infrastructure, and was the primary factor in the choice to use the AWS public cloud.
+
+\subsection{Data Security}
+
+SmartV offers services to a large number of users who understand their data to be both confidentially and securely stored. Implementing secure data storage is extremely important to the web-based platform, and required the use of encryption across S3 and RDS storage to ensure that there are strong barriers between users' data and potential bad actors.
+
+\subsection{Scalability and Elasticity}
+
+As SmartV anticipates a potentially rapid growth in user base and content volume, the ability to scale resources dynamically is a key concern. Ensuring that the cloud infrastructure can efficiently accommodate changes in demand, particularly during peak usage times, is extremely important. Implementing auto-scaling and load balancing strategies, along with the use of AWS services like EC2 and S3, is a vital solution to achieving the desired level of elasticity and scalability.
