@@ -2,7 +2,7 @@ resource "aws_lb" "main" {
   internal           = false
   load_balancer_type = "application"
   security_groups    = [aws_security_group.main.id]
-  subnets            = [for subnet in module.vpc.public_subnets : subnet.id]
+  subnets            = module.vpc.public_subnets
 }
 
 resource "aws_lb_target_group" "main" {
