@@ -44,11 +44,3 @@ High throughput and reliable networking is key to effective delivery of SmartV s
 \subsubsection*{Infrastructure Management}
 
 Deployed cloud infrastructure should be fully managed and configurable in anticipation of changes in future requirements, deployment of new services, and regular updates and maintenance.
-
-
-\subsection{Cloud Provider Selection}
-The growth in popularity of cloud services has fostered an industry with many competing cloud providers. Given the continued growth of the SmartV user-base, the choice to leverage an existing provider has been made to balance the increasing but dynamic demands of the platform while maintaining minimal-cost cloud infrastructure. Both internal and public cloud providers have been considered, including offerings from VMware, OpenStack, Azure, and Amazon Web Services (AWS).
-
-The use of internal cloud provisioning necessitates a significant up-front cost in both the hardware and software required by the transition to cloud infrastructure, and is over-all less flexible than the infrastructure-as-a-service models provided by Azure and AWS. These caveats to an internal cloud deployment represent unnecessary additional costs and management responsibilities to SmartV, reducing the organisations focus on end-users.
-
-For these reasons and over-all compatibility with the business requirements outlined in section \ref{sec:businessrequirements} AWS is selected as the cloud provider of choice for the project. The use of AWS also allows SmartV to bypass the upfront cost of any immediate upgrades to physical infrastructure by instead utilising storage, compute, and network provided by the AWS platform, paying for only the resources used by SmartV. The choice of AWS is also influenced by the ready availability of high-power compute instances required by the SmartV platform (see section \ref{sec:infrastructure-components}).
