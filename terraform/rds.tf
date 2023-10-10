@@ -1,5 +1,5 @@
 resource "aws_security_group" "rds" {
-  vpc_id = module.vpc.id
+  vpc_id = module.vpc.vpc_id
 
   ingress {
     protocol  = "tcp"
