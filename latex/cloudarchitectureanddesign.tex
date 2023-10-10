@@ -85,8 +85,24 @@ The entire cloud system will exist within a private VPC, with the only publicall
 
 Internally, the platform is networked through a private IPv4 subnet in CIDR block 10.0.0.0/16. Each private subnet in turn has it's own CIDR block with a netmask of 24. Compute and the RDS service reside in seperate private subnets to improve security.
 
-\subsection{Pricing}
+\subsection{Pricing Estimates}
 
 Utilising scalable infrastructure as a service makes accurate, fixed estimations of costs difficult as prices are tied directly to utilisation. Here an estimate of month-to-month costs is provided as calculated via the AWS pricing calculator\footnote{See \url{https://calculator.aws}.}
+\def\arraystretch{1.5}
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|l|l|}
+        \hline
+        \textbf{Service Name}                 & \textbf{Monthly Cost (USD)} \\
+        \hline
+        Amazon Simple Storage Service & 250                                                          \\
+        Amazon RDS for PostgreSQL     & 1,211                                                        \\
+        Amazon EC2                    & 4,295                                                        \\
+        \hline
+        \hline
+        Total                         & 5,756 \\
+        \hline                                                  
+    \end{tabular}
+\end{table}
 
 % https://calculator.aws/#/addService
